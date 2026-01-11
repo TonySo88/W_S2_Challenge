@@ -5,23 +5,87 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
+    //             (profile active status, reason for inactivity status)
     function profileActivation(profile, reason) {
-
+      let result = {};
+      // console.log("profile:", profile)
+      // console.log("reason:", reason)
+      
+      // cases where something unusual happens (returning a string/error/skipping normal process)
+      // they go first to act aas an early exit or guard
+      if (profile.active === true && (!reason)){
+        return "confirm status manually"
+      } else if (profile.active === true) {
+        result.active = false;
+        result.reason = reason
+      } else if (profile.active === false){
+        result.active = true;
+      } 
+      return result
     }
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
+      let red = "🟥";
+      let blue = "🟦";
 
+        if ((x < 1 || x > 3) || (y < 1 || y > 3)) {
+          return 'invalid coordinates'
+          // javascript rule:
+          // inner array (y axis) represents columns and outer array (x axis) represents rows 
+        } else if (grid[y-1][x-1] === red){
+          return "🟥 💀" 
+        } else if (grid[y-1][x-1] === blue) {
+          return "🟦 🥳"
+        }
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-
+      let result = {};
+      // for in loops iterate over objects
+      for (let key in obj) {
+        // console.log("key in obj:", key)
+        if (key.length > 9) {
+          return "shorten all prop names to 9 chars or less";
+        } else if (obj[key] === null) {
+          delete obj[key];
+        } else if (obj[key] === 1) {
+          obj[key] = true;
+        } else if (obj[key] === 0) {
+          obj[key] = false;
+        }
+      }
+      return obj;
     }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      // !text = if text is string is empty/if value is falsy
+      if (!text || forbidden.length === 0) { // handles empty cases
+        return text;
+      }
 
+      let splitText = text.split(' ')
+      
+      console.log("text:", text)
+      console.log("forbidden array:", forbidden)
+      console.log("splitText:", splitText)
+
+      for (let i = 0; i < splitText.length; i++) {
+        for (let j = 0; j < forbidden.length; j++) {
+        if (splitText[i] === forbidden[j]) {
+
+        console.log("forbidden[j].length:", forbidden[j].length)
+        // repeat(n) repeats the string "x" exactly n times, where n is the length of the original string
+        splitText[i] = "x".repeat(splitText[i].length) // replace forbidden word
+
+        console.log("splitText[i]/x:", splitText[i])
+        console.log("joined:", splitText)
+        }
+      }
+      }
+      return splitText.join(' '); // return final, joined string
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
