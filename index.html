@@ -68,20 +68,20 @@
 
       let splitText = text.split(' ')
       
-      console.log("text:", text)
-      console.log("forbidden array:", forbidden)
-      console.log("splitText:", splitText)
+      // console.log("text:", text)
+      // console.log("forbidden array:", forbidden)
+      // console.log("splitText:", splitText)
 
       for (let i = 0; i < splitText.length; i++) {
         for (let j = 0; j < forbidden.length; j++) {
         if (splitText[i] === forbidden[j]) {
 
-        console.log("forbidden[j].length:", forbidden[j].length)
+        // console.log("forbidden[j].length:", forbidden[j].length)
         // repeat(n) repeats the string "x" exactly n times, where n is the length of the original string
         splitText[i] = "x".repeat(splitText[i].length) // replace forbidden word
 
-        console.log("splitText[i]/x:", splitText[i])
-        console.log("joined:", splitText)
+        // console.log("splitText[i]/x:", splitText[i])
+        // console.log("joined:", splitText)
         }
       }
       }
@@ -89,13 +89,37 @@
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
+    // expected output format: "(987) 654-3210"
     function normalizePhoneNumber(num) {
+      // console.log("phone number:", num)
+      let split = num.split('')
+      // console.log("split number:", split)
 
+      split.splice(0, 0, '(')
+      split.splice(4, 0, ')')
+      split.splice(5, 0, ' ')
+      split.splice(9, 0, '-')
+      // console.log("post splice:", split)
+      // assign split to result variable because .join does not modify the array, it returns a new string
+      // assigning to result allows it to be console.logged, returned, or passed elsewhere
+      result = split.join('')
+      // console.log(result)
+      return result
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
-    function diceRolls() {
-
+    function diceRolls(roll) {
+      console.log("HELLO")
+      let counter = 0
+      while(true) {
+        counter++; 
+        console.log(counter)
+        if (counter === 3) {
+          break;
+        }
+        console.log(counter)
+      }
+      return counter;
     }
 
     // 🧪 DO NOT make any changes below this line ===================
