@@ -108,18 +108,56 @@
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
-    function diceRolls(roll) {
-      console.log("HELLO")
-      let counter = 0
-      while(true) {
-        counter++; 
-        console.log(counter)
-        if (counter === 3) {
+    // set counters
+    // roll the die and track rolls
+    // if currentRoll is a 6
+    // iterate consecutiveSix counter by 1
+    // else (if not true), reset counter to 0
+    // if counter is at 3, break the loop
+    function diceRolls() {
+      let totalRolls = 0;
+      let consecutiveSix = 0;
+
+      while (true) {
+        totalRolls++;
+        let currentRoll = Math.floor(Math.random()*6) + 1
+
+        if (currentRoll === 6) {
+          consecutiveSix++;
+        } else {
+          consecutiveSix = 0;
+        }
+
+        if (consecutiveSix === 3) {
           break;
         }
-        console.log(counter)
       }
-      return counter;
+      console.log("total rolls to get to get consecutive 6s:", totalRolls)
+      return totalRolls
+
+      // // set counters
+      // let totalRolls = 0;
+      // let consecutiveSix = 0;
+
+      // while (true) {
+      //   // roll the die and track rolls
+      //   let currentRoll = Math.floor(Math.random()*6) + 1;
+      //   totalRolls++
+      //   // if currentRoll is a 6
+      //   if (currentRoll === 6) {
+      //   // iterate consecutiveSix counter by 1
+      //   consecutiveSix++;
+      //   }else {
+      //   // else, reset counter to 0
+      //   consecutiveSix = 0;
+      //   }
+      //   // if counter is at 3, break the loop
+      //   if (consecutiveSix === 3) {
+      //     break;
+      //   }
+      // }
+      // console.log(`It took ${totalRolls} rolls to get 3 consecutive sixes!`);
+      // return totalRolls;
     }
 
     // 🧪 DO NOT make any changes below this line ===================
